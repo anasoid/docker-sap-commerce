@@ -1,4 +1,4 @@
-data
-tmp
+docker/cx/data
+docker/cx/tmp
 mount/tmp
 moumt/up
