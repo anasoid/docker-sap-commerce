@@ -7,7 +7,7 @@ ENV IS_B2B ${IS_B2B}
 ENV BASE_URL localhost:9002
 ENV BASE_SITE ${BASE_SITE}
 ENV CURRENCY gbp,usd
-ENV LANGUAGE uk,en
+ENV LANGUAGE en
 ENV URL_PARAMETERS baseSite,language,currency
 
 

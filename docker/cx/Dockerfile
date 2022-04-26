@@ -27,19 +27,15 @@ COPY prepare/scripts  /scripts
 COPY entrypoint.sh  /
 
 COPY data/home/.  /home/hybris
-COPY data/data  $HYBRIS_DATA_DIR
+COPY data/hybris/data  $HYBRIS_DATA_DIR
 
 RUN chown -R hybris:hybris /home/hybris \
-    && chown -R hybris:hybris $HYBRIS_DATA_DIR
+    && chown -R hybris:hybris $HYBRIS_HOME_DIR
 
 RUN chmod +rx scripts/* \
     && chmod +rx /entrypoint.sh
 
 
-
-
-RUN mkdir -p $HYBRIS_HOME_DIR
-RUN chmod 777 $HYBRIS_HOME_DIR
 
 
 EXPOSE 9001 9002 9003 9004 8000 8983

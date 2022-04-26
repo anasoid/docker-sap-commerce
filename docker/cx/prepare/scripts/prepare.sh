@@ -32,6 +32,7 @@ if ! [ -f "$LOCK_FILE_PREPARE" ]; then
     
     echo START custom local.properties
     echo "" >> $HYBRIS_CONFIG_DIR/local.properties
+    sed -i "s/media.default.storage.location.hash.salt=/notused=/" $HYBRIS_CONFIG_DIR/local.properties
     cat $HYBRIS_CONFIG_DIR/custom.properties >> $HYBRIS_CONFIG_DIR/local.properties
     
     cd $HYBRIS_BIN_DIR/platform
