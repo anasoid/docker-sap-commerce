@@ -6,7 +6,7 @@ set -e
 echo -ne 'n\n' | ng new spartacus --style=scss --skip-git
 
 cd spartacus
-ng add @spartacus/schematics@latest --skip-confirmation --interactive=false \
+ng add @spartacus/schematics@$SPA_VERSION --skip-confirmation --interactive=false \
 --base-url https://localhost:9002/ \
 --base-site $BASE_SITE \
 --currency=$CURRENCY \
