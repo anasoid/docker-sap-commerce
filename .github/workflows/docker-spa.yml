@@ -59,8 +59,7 @@ jobs:
         id: build
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: docker/spa/Dockerfile
+          context: docker/spa/
           load: true
           push: false
           build-args: |
