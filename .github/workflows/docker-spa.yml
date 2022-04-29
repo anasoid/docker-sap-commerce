@@ -11,10 +11,10 @@ jobs:
     strategy:
       matrix:
         include:
-          - output: "elasticsearch"
-            spa-version: latest
+          - spa-version: latest
             is-b2b : "false"
-
+          - spa-version: latest
+            is-b2b : "true"
 
 
     # v2 https://github.com/docker/build-push-action/blob/master/UPGRADE.md
@@ -24,7 +24,6 @@ jobs:
 
       - name: Config 📦
         run: |
-          echo output=${{ matrix.output }}
           echo spa-version=${{ matrix.spa-version }}
           echo suffix=${{ matrix.suffix }}
           echo is-b2b=${{ matrix.is-b2b }}
@@ -61,7 +60,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: docker/${{ matrix.output }}/Dockerfile
+          file: docker/spa/Dockerfile
           load: true
           push: false
           build-args: |
