@@ -25,17 +25,24 @@ jobs:
           echo is-b2b=${{ matrix.is-b2b }}
           echo tags-latest=${{ matrix.tags-latest }}
 
+      - name: BeforePrepare 📦
+        id: bprep
+        run: |
+          if [[ "${{ matrix.is-b2b }}" == "true" ]];then   echo ::set-output name=suffix::-b2b; else   echo ::set-output name=suffix::; fi;
+          if [[ "${{ matrix.is-b2b }}" == "true" ]];then   echo ::set-output name=sites::powertools-spa; else   echo ::set-output name=sites::apparel-uk-spa,electronics-spa; fi;
+
+
       - name: Prepare 📦
         id: prep
         run: |
           DOCKER_IMAGE=anasoid/sap-spartacus
+          VERSION="${{ matrix.spa-version }}${{ steps.bprep.outputs.suffix }}"
+          echo ::set-output name=version::${VERSION}
           echo ::set-output name=image::${DOCKER_IMAGE}
           echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
-          if [[ "${{ matrix.is-b2b }}" == "true" ]];then   echo ::set-output name=suffix::-b2b; else   echo ::set-output name=suffix::; fi;
-          if [[ "${{ matrix.is-b2b }}" == "true" ]];then   echo ::set-output name=sites::powertools-spa; else   echo ::set-output name=sites::apparel-uk-spa,electronics-spa; fi;
-          VERSION="${{ matrix.spa-version }}${{ steps.prep.outputs.suffix }}"
-          echo ::set-output name=version::${VERSION}
-          
+          echo ::set-output name=suffix::${{ steps.bprep.outputs.suffix }}
+          echo ::set-output name=sites::${{ steps.bprep.outputs.sites }}
+ 
       - name: Show Image Settings 📦
         run: echo "IMAGE=${{ steps.prep.outputs.image }} VERSION=${{ steps.prep.outputs.version }} SITES=${{ steps.prep.outputs.sites }} SUFFIX=${{ steps.prep.outputs.suffix }}"
 
