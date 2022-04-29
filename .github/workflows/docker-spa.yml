@@ -25,7 +25,6 @@ jobs:
       - name: Config 📦
         run: |
           echo spa-version=${{ matrix.spa-version }}
-          echo suffix=${{ matrix.suffix }}
           echo is-b2b=${{ matrix.is-b2b }}
           echo tags-latest=${{ matrix.tags-latest }}
 
@@ -33,12 +32,12 @@ jobs:
         id: prep
         run: |
           DOCKER_IMAGE=anasoid/sap-spartacus
-          VERSION="${{ matrix.spa-version }}${{ matrix.suffix }}"
           echo ::set-output name=image::${DOCKER_IMAGE}
           echo ::set-output name=version::${VERSION}
           echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
           if [[ "${{ matrix.is-b2b }}" == "true" ]];then   echo ::set-output name=suffix::-b2b; else   echo ::set-output name=suffix::; fi;
-          if [[ "${{ matrix.is-b2b }}" == "true" ]];then   echo ::set-output name=sites::powertools-spa; else   echo ::set-output name=suffix::apparel-uk-spa,electronics-spa; fi;
+          if [[ "${{ matrix.is-b2b }}" == "true" ]];then   echo ::set-output name=sites::powertools-spa; else   echo ::set-output name=sites::apparel-uk-spa,electronics-spa; fi;
+          VERSION="${{ matrix.spa-version }}${{ steps.prep.outputs.suffix }}"
 
       - name: Show Image Settings 📦
         run: echo "IMAGE=${{ steps.prep.outputs.image }} VERSION=${{ steps.prep.outputs.version }} SITES=${{ steps.prep.outputs.sites }}"
@@ -68,7 +67,7 @@ jobs:
             BASE_SITE=${{ steps.prep.outputs.sites }}
 
           tags: |
-            ${{ steps.prep.outputs.image }}:${{ matrix.spa-version }}${{ matrix.suffix }}
+            ${{ steps.prep.outputs.image }}:${{ matrix.spa-version }}${{ steps.prep.outputs.suffix }}
 
 
           labels: |
@@ -80,7 +79,7 @@ jobs:
       - name: Result 📦
         id: result
         run: |
-          echo ::set-output name=currentImage::${{ steps.prep.outputs.image }}:${{ matrix.spa-version }}${{ matrix.suffix }}
+          echo ::set-output name=currentImage::${{ steps.prep.outputs.image }}:${{ matrix.spa-version }}${{ steps.prep.outputs.suffix }}
           docker images
 
       #Publish on master
