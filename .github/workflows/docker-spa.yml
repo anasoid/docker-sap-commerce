@@ -71,7 +71,7 @@ jobs:
             BASE_SITE=${{ steps.prep.outputs.sites }}
 
           tags: |
-            ${{ steps.prep.outputs.image }}:${{ matrix.spa-version }}${{ steps.prep.outputs.suffix }}
+            ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.version }}
 
 
           labels: |
@@ -83,7 +83,7 @@ jobs:
       - name: Result 📦
         id: result
         run: |
-          echo ::set-output name=currentImage::${{ steps.prep.outputs.image }}:${{ matrix.spa-version }}${{ steps.prep.outputs.suffix }}
+          echo ::set-output name=currentImage::${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.version }}
           docker images
 
       #Publish on master
