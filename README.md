@@ -59,12 +59,12 @@ Docker SAP commerce (Hybris) for demo with Spartacus and Accelerator.
 ```shell
 docker run  --name hybris -v <sap-commerce-platform>:/hybris -p 9002:9002 -p 8983:8983  anasoid/sap-commerce:2105.10
 ```
-3. Wait ~10 minutes until hybris start:
-4. Check accelerator B2C:
+4. Wait ~10 minutes until hybris start:
+5. Check accelerator B2C:
    1. https://apparel-uk.local:9002/yacceleratorstorefront/
    2. https://apparel-de.local:9002/yacceleratorstorefront/
    3. https://electronics.local:9002/yacceleratorstorefront/
-5. Check accelerator B2B:
+6. Check accelerator B2B:
    1. https://powertools.local:9002/yb2bacceleratorstorefront
    2. Use the folowing customer to login with password '1234'
       1. akiro.nakamura@pronto-hw.com
@@ -85,9 +85,9 @@ Start only one Spartacus instance on the same time.
 ```shell
 docker run --name spa  -p 4200:4200 -e "BASE_URL=localhost:9002" anasoid/sap-spartacus:4.3
 ```
-3. Wait ~5 minutes until Spartacus start.
-4. Check SAP commerce is laredy started and certificat is accepted for https://localhost:9002.
-5. Check Spartacus B2C :
+2. Wait ~5 minutes until Spartacus start.
+3. Check SAP commerce is laredy started and certificat is accepted for https://localhost:9002.
+4. Check Spartacus B2C :
    1. http://localhost:4200/apparel-uk-spa/en/GBP/
    2. http://localhost:4200/electronics-spa/en/USD/
 
@@ -98,9 +98,9 @@ docker run --name spa  -p 4200:4200 -e "BASE_URL=localhost:9002" anasoid/sap-spa
 ```shell
 docker run --name spa-b2b  -p 4200:4200 -e "BASE_URL=localhost:9002" anasoid/sap-spartacus:4.3-b2b
 ```
-3. Wait ~5 minutes until Spartacus start.
-4. Check SAP commerce is laredy started and certificat is accepted for https://localhost:9002.
-5. Check Spartacus B2C :
+2. Wait ~5 minutes until Spartacus start.
+3. Check SAP commerce is laredy started and certificat is accepted for https://localhost:9002.
+4. Check Spartacus B2C :
    1. http://localhost:4200/powertools-spa/en/USD/
 
 
