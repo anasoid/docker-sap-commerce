@@ -1,6 +1,6 @@
 # docker-sap-commerce
 
-Docker SAP commerce for demo with Spartacus and Accelerator.
+Docker SAP commerce (Hybris) for demo with Spartacus and Accelerator.
 
 # Quick reference
 
