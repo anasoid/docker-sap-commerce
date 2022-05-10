@@ -119,4 +119,3 @@ docker run --name spa-b2b  -p 4200:4200 -e "BASE_URL=localhost:9002" anasoid/sap
 # Troubleshooting & Limitation
 
 1. Backoffice Solr indexation not work : bug in SAP commerce.
-1. Change sincedb file can't done on logstash with Elasticsearch without building image.
