@@ -5,7 +5,7 @@ set -e
 
 BRANCH=up
 MERGE_NAME=hybris
-HYBRIS_VERSION=hybris-commerce-suite-2105.10
+HYBRIS_VERSION=hybris-commerce-suite-2205.0
 PROJECT=mount
 
 

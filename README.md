@@ -12,7 +12,8 @@ Docker SAP commerce (Hybris) for demo with Spartacus and Accelerator.
 ## Image version
 ###  SAP Commerce (anasoid/sap-commerce)
 
-- [`latest`, `2105`, `2105.10` ](https://github.com/anasoid/docker-sap-commerce/blob/main/docker/cx/Dockerfile)
+- [`latest`, `2205`, `2205.0` ](https://github.com/anasoid/docker-sap-commerce/blob/main/docker/cx/Dockerfile)
+- [`2105`, `2105.10` ](https://github.com/anasoid/docker-sap-commerce/blob/V2105/docker/cx/Dockerfile)
 
 ###  SAP Spartacus (anasoid/sap-spartacus)
 - [`latest`, `4.3` ](https://github.com/anasoid/docker-sap-commerce/blob/main/docker/spa/Dockerfile)
