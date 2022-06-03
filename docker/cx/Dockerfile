@@ -1,5 +1,5 @@
 
-FROM sapmachine:11
+FROM sapmachine:17
 
 LABEL org.opencontainers.image.authors="Anas OUFDOU <oufdou.anas@gmail.com>"
 
@@ -38,6 +38,9 @@ COPY --chown=hybris:hybris data/hybris/data  $HYBRIS_DATA_DIR
 RUN chmod +rx scripts/* \
     && chmod +rx /entrypoint.sh
 
+RUN apt-get update && apt-get install -y \
+  wget \
+  && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 9001 9002 9003 9004 8000 8983
 
