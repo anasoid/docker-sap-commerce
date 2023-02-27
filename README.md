@@ -53,9 +53,9 @@ Docker SAP commerce (Hybris) for demo with Spartacus and Accelerator.
 ## Start SAP Commerce
 
 1. Unzip SAP Commerce to a folder .
-2. configure hosts, in /etc/hosts for linux or c:\Windows\System32\Drivers\etc\hosts for windows add :
+2. Configure hosts, in /etc/hosts for linux or c:\Windows\System32\Drivers\etc\hosts for windows add :
    1. 127.0.0.1 electronics.local apparel-de.local apparel-uk.local powertools.local
-3. Start sap commerce and replace `<sap-commerce-platform>` with local hybris platform with the same version as docker image.
+3. Start SAP Commerce and replace `<sap-commerce-platform>` with local hybris platform with the same version as docker image.
 
 ```shell
 docker run  --name hybris -v <sap-commerce-platform>:/hybris -p 9002:9002 -p 8983:8983  anasoid/sap-commerce:2105.10
@@ -113,7 +113,7 @@ docker run --name spa-b2b  -p 4200:4200 -e "BASE_URL=localhost:9002" anasoid/sap
 
 | Environment variables | Description      | Default            |
 | --------------------- | ---------------- | ------------------ |
-| `BASE_URL`            | SAP Commerce URL | elasticsearch:9200 |
+| `BASE_URL`            | SAP Commerce URL | localhost:9002 |
 
 
 
